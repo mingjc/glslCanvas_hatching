@@ -45,7 +45,7 @@ void main()
                     c = mix( texture2D( u_tex5, vUv), texture2D( u_tex4, vUv) , 6. * ( shading - step ) );
                 }
                 if( shading > 2. * step && shading <= 3. * step ){
-                    c = mix( texture2D( u_tex4, vUv), texture2D( u_tex3, vUv ), 6. * ( shading - 2. * step ) );
+                    c = mix( texture2D( u_tex4, vUv), texture2D( u_tex3, vUv*sin(u_time*0.03-0.3)  ), 6. * ( shading - 2. * step ) );
                 }
                 if( shading > 3. * step && shading <= 4. * step ){
                     c = mix( texture2D( u_tex3, vUv), texture2D( u_tex2, vUv ), 6. * ( shading - 3. * step ) );
