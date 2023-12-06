@@ -28,9 +28,9 @@ float mouseEffect(vec2 uv, vec2 mouse, float size)
 void main()
 {
     vec2 uv= gl_FragCoord.xy/u_resolution.xy;
-    vec2 vUv=fract(8.0*uv);                 //key
-    vec4 shadeColor= texture2D(u_tex0, uv); //取MonaLisa
-    float shading= shadeColor.r;            //取MonaLisa綠色版作為明亮值
+    vec2 vUv=fract(6.0*uv);                 //key
+    vec4 shadeColor= texture2D(u_tex0, uv); //取圖
+    float shading= shadeColor.r;            //取圖紅色版作為明亮值
     vec2 mouse=u_mouse.xy/u_resolution.xy;
     
     float value=mouseEffect(uv,mouse,0.05);
