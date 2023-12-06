@@ -28,9 +28,9 @@ float mouseEffect(vec2 uv, vec2 mouse, float size)
 void main()
 {
     vec2 uv= gl_FragCoord.xy/u_resolution.xy;
-    vec2 vUv=fract(6.0*uv);                 //key
-    vec4 shadeColor= texture2D(u_tex0, uv); //取圖
-    float shading= shadeColor.r;            //取圖紅色版作為明亮值
+    vec2 vUv=fract(8.0*uv);                 //key
+    vec4 shadeColor= texture2D(u_tex0, uv); //取MonaLisa
+    float shading= shadeColor.r;            //取MonaLisa綠色版作為明亮值
     vec2 mouse=u_mouse.xy/u_resolution.xy;
     
     float value=mouseEffect(uv,mouse,0.05);
@@ -51,13 +51,13 @@ void main()
                     c = mix( texture2D( u_tex3, vUv), texture2D( u_tex2, vUv ), 6. * ( shading - 3. * step ) );
                 }
                 if( shading > 4. * step && shading <= 5. * step ){
-                    c = mix( texture2D( u_tex2, vUv*sin(u_time*0.03-0.3)  ), texture2D( u_tex1, vUv ), 6. * ( shading - 4. * step ) );
+                    c = mix( texture2D( u_tex2, vUv ), texture2D( u_tex1, vUv ), 6. * ( shading - 4. * step ) );
                 }
                 if( shading > 5. * step ){
-                    c = mix( texture2D( u_tex1 , vUv*sin(u_time*0.05+0.5)), vec4( 1.), 6. * ( shading - 5. * step ) );
+                    c = mix( texture2D( u_tex1 , vUv), vec4( 1.), 6. * ( shading - 5. * step ) );
                 }
                 
-     vec4 inkColor = vec4(0.775,0.393,0.363,1.000);
+     vec4 inkColor = vec4(0.204,1.000,0.622,1.000);
      vec4 src = mix( mix( inkColor, vec4(1.), c.r ), c, .5 );
      vec4 mixColor = mix(shadeColor , src, value);
      gl_FragColor = mixColor;
